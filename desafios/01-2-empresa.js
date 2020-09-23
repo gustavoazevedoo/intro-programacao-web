@@ -1,5 +1,3 @@
-//Construção e impressão de objetos
-
 const empresa = {
     nome: "Rocketseat",
     cor: "Roxo",

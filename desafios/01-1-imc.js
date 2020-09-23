@@ -1,5 +1,3 @@
-//Cálculo do IMC    
-
 const nome = "Gustavo"
 const peso = 60
 const altura = 1.75

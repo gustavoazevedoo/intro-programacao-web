@@ -32,4 +32,3 @@ for (let i = 0; i < usuarios.length; i++) {
         console.log(`O usuário ${usuarios[i].nome} trabalha com CSS`)
     }
 }
-// Um pouco diferente da solução disponibilizada

@@ -2,63 +2,57 @@ const user = {
     name: "Mariana",
     transactions: [],
     balance: 0
-  };
+}
 
-  // Adicionar transações
-  function createTransaction(transaction) {
+function createTransaction(transaction) {
     user.transactions.push(transaction)
 
-    if(transaction.type == 'credit') {
+    if (transaction.type == 'credit') {
         user.balance = user.balance + transaction.value
     } else {
         user.balance = user.balance - transaction.value
     }
-  }
+}
 
+function getHigherTransactionByType(type) {
+    let higherTransaction
+    let highertValue = 0
 
-  function getHigherTransactionByType(type) {
-      let higherTransaction
-      let highertValue = 0
+    for (let transaction of user.transactions) {
+        if (transaction.type == type && transaction.value > highertValue) {
+            highertValue = transaction.value
+            higherTransaction = transaction
+        }
+    }
+    return higherTransaction
+}
 
-      for( let transaction of user.transactions) {
-          if(transaction.type == type && transaction.value > highertValue) {
-              highertValue = transaction.value
-              higherTransaction = transaction
-          }
-      }
+function getAverageTransactionValue() {
+    let sum = 0
 
-      return higherTransaction
-  }
+    for (let transaction of user.transactions) {
+        sum = sum + transaction.value
+    }
 
+    return sum / user.transactions.length
+}
 
-  function getAverageTransactionValue() {
-      let sum = 0
+function getTransactionsCount() {
+    let count = {
+        credit: 0,
+        debit: 0,
+    }
 
-      for(let transaction of user.transactions) {
-          sum = sum + transaction.value
-      }
+    for (let transaction of user.transactions) {
+        if (transaction.type === 'credit') {
+            count.credit++
+        } else {
+            count.debit++
+        }
+    }
 
-      return sum / user.transactions.length
-  }
-
-
-  function getTransactionsCount() {
-      let count = {
-          credit: 0,
-          debit: 0,
-      }
-      for (let transaction of user.transactions) {
-          if (transaction.type === 'credit') {
-              count.credit++
-          }else {
-              count.debit++
-          }
-      }
-      return count
-  }
-
-
-
+    return count
+}
 
 createTransaction({ type: "credit", value: 50 });
 createTransaction({ type: "credit", value: 120 });
